@@ -31,4 +31,10 @@ public class NotesController {
     public ResponseEntity<Note> readNote(@PathVariable Long id) {
         return new ResponseEntity<>(notesRepository.findById(id).orElse(null), HttpStatus.OK);
     }
+
+    @DeleteMapping("/notes/{id}")
+    public ResponseEntity<Note> deleteNote(@PathVariable Long id) {
+        notesRepository.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
