@@ -37,4 +37,9 @@ public class NotesController {
         notesRepository.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @PutMapping("/notes")
+    public ResponseEntity<Note> updateNote(@RequestBody Note note) {
+        return new ResponseEntity<>(notesRepository.save(note), HttpStatus.OK);
+    }
 }
